@@ -18,7 +18,7 @@ function Home() {
       description: "Upload your PDF files to merge them into one.",
     },
     {
-      link: "split",
+      link: "extract",
       Icon: SnippetsOutlined,
       title: "Extract images",
       description: "Extract pages from your PDF into shareable images",

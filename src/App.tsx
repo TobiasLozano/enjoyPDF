@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Layout, Menu, theme, type MenuProps } from "antd";
-import { Link, Outlet, useNavigate } from "react-router";
+import { Link, Outlet, useLocation, useNavigate } from "react-router";
 import {
   SnippetsOutlined,
   ShrinkOutlined,
@@ -11,29 +11,39 @@ import type { MenuItemType } from "antd/es/menu/interface";
 
 const { Header, Content, Footer } = Layout;
 
-const items: MenuItemType[] = [
-  {
-    label: "Merge",
-    key: "merge",
-    icon: <ShrinkOutlined />,
-  },
-  {
-    label: "Extract images",
-    key: "extract",
-    icon: <SnippetsOutlined />,
-  },
-  {
-    label: "Generate from images",
-    key: "generate",
-    icon: <FileImageOutlined />,
-  },
-];
 const App: React.FC = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   const [current, setCurrent] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    const path = location.pathname.split("/")[1];
+    if (path) {
+      setCurrent(path);
+    } else {
+      setCurrent("");
+    }
+  }, [location]);
+
+  const items: MenuItemType[] = [
+    {
+      label: "Merge",
+      key: "merge",
+      icon: <ShrinkOutlined />,
+    },
+    {
+      label: "Extract images",
+      key: "extract",
+      icon: <SnippetsOutlined />,
+    },
+    {
+      label: "Generate from images",
+      key: "generate",
+      icon: <FileImageOutlined />,
+    },
+  ];
 
   const onClick: MenuProps["onClick"] = (e) => {
     console.log("click ", e);

@@ -40,7 +40,7 @@ function MergePdf() {
       console.log("Dropped files", e.dataTransfer.files);
     },
   };
-  const onMerge = async () => {
+  const handleMerge = async () => {
     if (fileList.length === 0) {
       return seShowAlert(true);
     }
@@ -96,7 +96,7 @@ function MergePdf() {
           type="primary"
           loading={loading && { icon: <SyncOutlined spin /> }}
           ghost
-          onClick={() => onMerge()}
+          onClick={() => handleMerge()}
           style={{ display: "block", margin: "0 auto", marginTop: "20px" }}
         >
           {!loading && "Merge files"}
