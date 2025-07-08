@@ -4,7 +4,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-   "main": "electron/main.js",
+  "main": "electron/main.js",
   "scripts": {
     "dev": "concurrently \"vite\" \"cross-env NODE_ENV=development electron .\"",
     "build": "tsc -b && vite build",
@@ -37,6 +37,7 @@
     }
   },
   "dependencies": {
+    "antd": "^5.26.4",
     "electron-is-dev": "^3.0.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

@@ -1,43 +1,87 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import { Link, Outlet } from "react-router";
+import React, { useState } from "react";
+import { Layout, Menu, theme, type MenuProps } from "antd";
+import { Link, Outlet, useNavigate } from "react-router";
+import {
+  SnippetsOutlined,
+  ShrinkOutlined,
+  FileImageOutlined,
+  FilePdfFilled,
+} from "@ant-design/icons";
+import type { MenuItemType } from "antd/es/menu/interface";
 
-function App() {
-  const [count, setCount] = useState(0);
+const { Header, Content, Footer } = Layout;
+
+const items: MenuItemType[] = [
+  {
+    label: "Join PDF",
+
+    key: "join",
+    icon: <ShrinkOutlined />,
+  },
+  {
+    label: "Extract images",
+    key: "extract",
+    icon: <SnippetsOutlined />,
+  },
+  {
+    label: "Image to PDF",
+    key: "generate",
+    icon: <FileImageOutlined />,
+  },
+];
+const App: React.FC = () => {
+  const {
+    token: { colorBgContainer, borderRadiusLG },
+  } = theme.useToken();
+  const [current, setCurrent] = useState("mail");
+  const navigate = useNavigate();
+
+  const onClick: MenuProps["onClick"] = (e) => {
+    console.log("click ", e);
+    navigate(`/${e.key}`);
+
+    setCurrent(e.key);
+  };
 
   return (
-    <>
-    <h1>APP</h1>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <Link to="/home">
-      
-        <button> Open home</button>
-      </Link>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <Layout>
+      <Header
+        style={{ display: "flex", alignItems: "center" }}
+        className="header"
+      >
+        <Link to="/">
+          <FilePdfFilled
+            style={{ fontSize: "32px", marginRight: "50px", color: "white" }}
+          />
+        </Link>
 
-      <Outlet />
-    </>
+        <Menu
+          theme="light"
+          mode="horizontal"
+          items={items}
+          style={{ flex: 1, minWidth: 0 }}
+          onClick={onClick}
+          selectedKeys={[current]}
+        />
+      </Header>
+      <Content style={{ padding: "0 48px" }}>
+        <div
+          style={{
+            background: colorBgContainer,
+            height: "calc(100vh - 130px)",
+            overflow: "scroll",
+            padding: 24,
+            borderRadius: borderRadiusLG,
+          }}
+        >
+          <Outlet />
+
+        
+        </div>
+      </Content>
+      <Footer style={{ textAlign: "center" }}>Created with ❤️ by Tobias</Footer>
+    </Layout>
   );
-}
+};
 
 export default App;
