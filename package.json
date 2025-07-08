@@ -32,14 +32,14 @@
       "target": "nsis"
     },
     "linux": {
-      "target": "AppImage",
-      "icon": "icon.png"
+      "target": "AppImage"
     }
   },
   "dependencies": {
     "antd": "^5.26.4",
     "electron-is-dev": "^3.0.1",
     "file-saver": "^2.0.5",
+    "jspdf": "^3.0.1",
     "jszip": "^3.10.1",
     "pdf-merger-js": "^5.1.2",
     "pdfjs-dist": "^5.3.93",

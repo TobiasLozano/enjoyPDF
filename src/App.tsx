@@ -86,7 +86,7 @@ const App: React.FC = () => {
           <Outlet />
         </div>
       </Content>
-      <Footer style={{ textAlign: "center" }}>Created with ❤️ by Tobias</Footer>
+      <Footer style={{ textAlign: "center" }}>Created by Tobias</Footer>
     </Layout>
   );
 };
