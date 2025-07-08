@@ -13,8 +13,7 @@ const { Header, Content, Footer } = Layout;
 
 const items: MenuItemType[] = [
   {
-    label: "Merge PDF",
-
+    label: "Merge",
     key: "merge",
     icon: <ShrinkOutlined />,
   },
@@ -24,7 +23,7 @@ const items: MenuItemType[] = [
     icon: <SnippetsOutlined />,
   },
   {
-    label: "Image to PDF",
+    label: "Generate from images",
     key: "generate",
     icon: <FileImageOutlined />,
   },
@@ -33,7 +32,7 @@ const App: React.FC = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-  const [current, setCurrent] = useState("mail");
+  const [current, setCurrent] = useState("");
   const navigate = useNavigate();
 
   const onClick: MenuProps["onClick"] = (e) => {
@@ -75,8 +74,6 @@ const App: React.FC = () => {
           }}
         >
           <Outlet />
-
-        
         </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>Created with ❤️ by Tobias</Footer>

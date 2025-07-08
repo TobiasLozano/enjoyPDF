@@ -1,64 +1,31 @@
-import { Divider, Typography, Space, Card } from "antd";
+import { Divider, Typography, Space } from "antd";
 import {
   ShrinkOutlined,
   SnippetsOutlined,
   FileImageOutlined,
 } from "@ant-design/icons";
-import { accentColor } from "../utils/constans";
-import { Link } from "react-router";
+import CardItem from "../components/CardItem";
+
 const { Title, Paragraph } = Typography;
 
-function CardItem({
-  link,
-  Icon,
-  description,
-}: {
-  link: string;
-  Icon: React.ElementType;
-  description: string;
-}) {
-  return (
-    <Link to={link}>
-      <Card
-        title="Merge PDF"
-        variant="borderless"
-        style={{
-          width: 300,
-          textAlign: "center",
-          borderRadius: "10px",
-          boxShadow: "0 0 10px rgba(0,0,0,0.1)",
-        }}
-        hoverable
-      >
-        <Icon
-          style={{
-            marginBottom: "10px",
-            fontSize: "40px",
-            color: "white",
-            borderRadius: "30%",
-            padding: "10px",
-            background: accentColor,
-          }}
-        />
-        <Paragraph>{description} </Paragraph>
-      </Card>
-    </Link>
-  );
-}
+
 function Home() {
   const items = [
     {
       link: "merge",
+      title: "Merge",
       Icon: ShrinkOutlined,
       description: "Upload your PDF files to merge them into one.",
     },
     {
       link: "split",
       Icon: SnippetsOutlined,
+      title: "Extract images",
       description: "Extract pages from your PDF into shareable images",
     },
     {
       link: "generate",
+      title: "Generate from images",
       Icon: FileImageOutlined,
       description: "Create a PDF file by uploading your images",
     },
@@ -80,6 +47,7 @@ function Home() {
         {items.map((item) => (
           <CardItem
             key={item.link}
+            title={item.title}
             link={item.link}
             Icon={item.Icon}
             description={item.description}
