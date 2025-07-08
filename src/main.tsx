@@ -5,7 +5,7 @@ import App from "./App.tsx";
 import Home from "./pages/Home.tsx";
 import "./index.css";
 import { ConfigProvider } from "antd";
-import JoinPDF from "./pages/JoinPdf.tsx";
+import MergePdf from "./pages/MergePdf.tsx";
 import Generate from "./pages/Generate.tsx";
 import ExtractImages from "./pages/ExtractImages.tsx";
 createRoot(document.getElementById("root")!).render(
@@ -19,7 +19,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="" element={<App />}>
           {/*   <Route index element={<Home />} />  */}
           <Route index element={<Home />} />
-          <Route path="join" element={<JoinPDF />} />
+          <Route path="merge" element={<MergePdf />} />
           <Route path="generate" element={<Generate />} />
           <Route path="extract" element={<ExtractImages />} />
         </Route>

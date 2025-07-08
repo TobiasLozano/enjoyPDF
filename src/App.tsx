@@ -13,9 +13,9 @@ const { Header, Content, Footer } = Layout;
 
 const items: MenuItemType[] = [
   {
-    label: "Join PDF",
+    label: "Merge PDF",
 
-    key: "join",
+    key: "merge",
     icon: <ShrinkOutlined />,
   },
   {
@@ -69,7 +69,7 @@ const App: React.FC = () => {
           style={{
             background: colorBgContainer,
             height: "calc(100vh - 130px)",
-            overflow: "scroll",
+            overflowY: "scroll",
             padding: 24,
             borderRadius: borderRadiusLG,
           }}
